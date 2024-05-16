@@ -10,6 +10,7 @@ let Options = ["rock", "paper", "scissor"];
 let PlayerScore = 0;
 let CompetitorScore = 0;
 let Status = true;
+let Level = localStorage.getItem("level") || 3;
 
 function ShowScore() {
     PlayerScorePanel.innerText = PlayerScore;
@@ -17,10 +18,10 @@ function ShowScore() {
 }
 
 function ValidateScore() {
-    if (PlayerScore == 3 || CompetitorScore == 3) {
+    if (PlayerScore == Level || CompetitorScore == Level) {
         Status = false;
         Buttons.forEach((b) => (b.disabled = true));
-        if (PlayerScore == 3) {
+        if (PlayerScore == Level) {
             ShowMessage("Congrats, You Won!");
         } else {
             ShowMessage("You Loose!");
